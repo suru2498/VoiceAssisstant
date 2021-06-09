@@ -1,5 +1,7 @@
 # VoiceAssisstant
 
+
+Run the Hotward.py file and speak "wake up" to activate Friday.py
 Created a Voice Assisstant using python, where you just give commands and the rest of the work will be done by the program.
 Please have some patience while running the program, and acquire good knowledge of the code and some commands will take time to execute.
 Few commands that you can use are:

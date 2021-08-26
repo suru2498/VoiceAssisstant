@@ -25,7 +25,7 @@ import requests                                # for sending HTTP request
 from bs4 import BeautifulSoup                  # getting data out ou HTML
 import speedtest                               # testing bandwidth speed
 from pywikihow import search_wikihow           # data predictor
-
+#from win10toast import ToastNotifier
 
 from pytube import YouTube                        # for youtube video
 from playsound import playsound                   # to play any sound
@@ -166,17 +166,38 @@ def Wolfram(search):
     Speak(target_loc)
     Speak(f"sir, {name} is {distance} Kilomitres away from you")
 
-
-
-
-
+def OpenAnything():
+    os.startfile("D:\\")
     
+    sleep(2)
+    Speak("what would you like to search sir")
+    pyautogui.click(x=1748, y=88)
+    
+    name = takeCommand()
+    while True:
+        if name == "none":
+            name = takeCommand()
+        else:
+            break
+    keyboard.write(name)
+    keyboard.press("enter")
+    Speak("here what i have found")
+    Speak("just a moment")
+    
+    
+    
+
+
+#toast = ToastNotifier()
+#toast.show_toast("Friday", "i am now activated sir", duration=3)
+
+
 
 
 def TaskManager():
 
-    Wish()
-    Temperature()
+    #Wish()
+    #Temperature()
    
 
 
@@ -590,6 +611,32 @@ def TaskManager():
         Speak("Switching Window")
         pyautogui.keyDown("alt")
         pyautogui.press("tab")
+        pyautogui.press("left")
+        Speak("where to move sir, only right or only left?")
+        
+        decision = takeCommand()
+        
+        while True:
+            if decision == "none":
+                decision = takeCommand()
+            else:
+                break
+            
+        if "only right" in decision:
+            pyautogui.press("right")
+            
+        if "only left" in decision:
+            pyautogui.press("left")
+            
+        if "long right" in decision:
+            pyautogui.press("right")
+            pyautogui.press("right")
+    
+        if "long left" in decision:
+            pyautogui.press("left")
+            pyautogui.press("left")
+        
+        
         pyautogui.keyUp("alt")
         Speak("Done sir")
 
@@ -889,7 +936,29 @@ def TaskManager():
         print(message.sid)
         Speak("done sir")
 
-    
+    def ChatBot():
+
+        hello = ('hello', 'hai', 'hay', 'hey', 'hi')
+        reply_hello = ('hello sir, i am jarvis', 'welcome boss, i am jarvis, your AI assistant',
+        "hello sir, do you want anything")
+
+        
+        Speak("hello, ask anything sir")
+        listen = takeCommand()
+        while True:
+            if listen == "none":
+                listen = takeCommand()
+            else:
+                break
+        chat = str(listen)
+
+        for word in chat.split():
+            if word in hello:
+                reply = random.choice(reply_hello)
+                Speak(reply)
+               
+                
+        
 
 
 #-------------------------- END OF FUNCTIONS --------------------------------------#
@@ -944,6 +1013,7 @@ def TaskManager():
 
         elif "switch window" in query:                    # switches window
             Switch()
+            
         elif "calculate this" in query:                   # calculate with help of wolframalpha
             Calculator()
         elif "battery" in query:                          # check system battery
@@ -973,15 +1043,35 @@ def TaskManager():
         elif "message" in query:                          # for twilio account message
             Message()
         elif "call" in query:                             # for twilio account calling
-            Call()
-
-
-    
+            Call()    
 
         elif "increase volume" in query:                  # volume up
             pyautogui.press("volumeup")
+            pyautogui.press("volumeup")
+            pyautogui.press("volumeup")
+            pyautogui.press("volumeup")
+            pyautogui.press("volumeup")
+            pyautogui.press("volumeup")
+            pyautogui.press("volumeup")
+            pyautogui.press("volumeup")
+            pyautogui.press("volumeup")
+            pyautogui.press("volumeup")
+            pyautogui.press("volumeup")
+            pyautogui.press("volumeup")
+            
         elif "decrease volume" in query:                  # volume down
             pyautogui.press("volumedown")
+            pyautogui.press("volumedown")
+            pyautogui.press("volumedown")
+            pyautogui.press("volumedown")
+            pyautogui.press("volumedown")
+            pyautogui.press("volumedown")
+            pyautogui.press("volumedown")
+            pyautogui.press("volumedown")
+            pyautogui.press("volumedown")
+            pyautogui.press("volumedown")
+            pyautogui.press("volumedown")
+            
         elif "mute" in query:                             # mute
             pyautogui.press("volumemute")
 
@@ -1012,6 +1102,23 @@ def TaskManager():
                     break
             Speak("I am Done sir")
 
+        elif "pause" in query:
+            keyboard.press("space")
+        
+        elif "play" in query:
+            keyboard.press("space")
+        
+        elif "close" in query:
+                os.system("TASKKILL /F /im VLC.exe")
+                Speak("Music is stopped")
+                
+        
+        elif "chat" in query:
+            ChatBot()
+            
+        elif "search" in query:
+            OpenAnything()
+
         elif "take care" in query:                        # for closing
             Speak("aww, thank you for caring about me , i love you sir,bye")
             break
@@ -1035,3 +1142,4 @@ def TaskManager():
 
 
 TaskManager()
+
